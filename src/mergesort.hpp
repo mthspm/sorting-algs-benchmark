@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <cstring>
+#include <vector>
 
 inline void merge(int *array, int *aux, int start, int middle, int end) {
     int a = 0, b = start, c = middle + 1;
