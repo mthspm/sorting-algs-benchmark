@@ -1,9 +1,9 @@
 #pragma once
 #include <vector>
+#include <cstring>
 
 inline void merge(int *array, int *aux, int start, int middle, int end) {
     int a = 0, b = start, c = middle + 1;
-    int size = (end - start) + 1;
 
     while (b <= middle && c <= end) {
         if (array[b] > array[c]) {
@@ -18,9 +18,9 @@ inline void merge(int *array, int *aux, int start, int middle, int end) {
     while (c <= end)
         aux[a++] = array[c++];
 
-    for (int i = start, aux_idx = 0; i <= end; i++) {
-        array[i] = aux[aux_idx++];
-    }
+    // copia a memória de aux (0 até size) para array (start até  start + size)
+    int size = (end - start) + 1;
+    std::memcpy(&array[start], aux, size * sizeof(int));
 }
 
 void merge_sort(int *array, int *aux, int start, int end) {
