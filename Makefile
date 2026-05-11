@@ -27,6 +27,10 @@ run: all
 	@echo "Executando benchmark..."
 	@$(RUN_COMMAND)
 
+run-csv: all
+	@echo "Executando benchmark..."
+	@$(RUN_COMMAND) --benchmark_out=bench_results.csv --benchmark_out_format=csv
+
 test: all
 	@echo "Executando testes..."
 	@$(TEST_COMMAND)
