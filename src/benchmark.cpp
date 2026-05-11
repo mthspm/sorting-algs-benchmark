@@ -6,19 +6,18 @@
 #include "mergesort.hpp"
 #include "utils.hpp"
 
-// Define SortAlgorithm como uma função void que recebe um vetor de inteiros
-using SortAlgorithm = void (*)(std::vector<int> &);
+using namespace benchmark_utils;
 
 // Função genérica para fazer o benchmark de um algoritmo de ordenação qualquer
-template <SortAlgorithm SortFunc> static void BM_Sort(benchmark::State &state) {
+template <sort_algorithm sort_function> static void BM_random_sort(benchmark::State &state) {
     const int N = state.range(0);
 
     for (auto _ : state) {
         state.PauseTiming();
-        auto v = benchmark_utils::generate_random_vector(N);
+        auto v = generate_random_vector(N);
         state.ResumeTiming();
 
-        SortFunc(v);
+        sort_function(v);
 
         benchmark::DoNotOptimize(v.data());
     }
@@ -26,7 +25,7 @@ template <SortAlgorithm SortFunc> static void BM_Sort(benchmark::State &state) {
 }
 
 // Faz o benchmark do merge_sort para 1, 2, 3 e 4 milhões de elementos
-BENCHMARK_TEMPLATE(BM_Sort, merge_sort)
+BENCHMARK_TEMPLATE(BM_random_sort, merge_sort)
     ->Arg(1000000)
     ->Arg(2000000)
     ->Arg(3000000)

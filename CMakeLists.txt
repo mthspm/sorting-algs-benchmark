@@ -33,6 +33,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Aponta para os arquivos dentro de src/
 add_executable(sortbenchmark src/benchmark.cpp)
+add_executable(testalg src/testalg.cpp)
 
 # Linkagem com a biblioteca baixada
 target_link_libraries(sortbenchmark PRIVATE benchmark::benchmark)

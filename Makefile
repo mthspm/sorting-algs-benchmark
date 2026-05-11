@@ -2,16 +2,19 @@
 BUILD_DIR = build
 # No Windows, executáveis precisam da extensão .exe
 EXE_NAME = sortbenchmark
+TEST_NAME = testalg
 
 # Detecção de Sistema Operacional
 ifeq ($(OS),Windows_NT)
     # Comandos Windows (CMD)
     RM = rmdir /s /q
     RUN_COMMAND = $(BUILD_DIR)\bin\$(EXE_NAME).exe
+	TEST_COMMAND = $(BUILD_DIR)\bin\$(EXE_NAME).exe
 else
     # Comandos Linux/macOS
     RM = rm -rf
     RUN_COMMAND = ./$(BUILD_DIR)/bin/$(EXE_NAME)
+	TEST_COMMAND = ./$(BUILD_DIR)/bin/$(TEST_NAME)
 endif
 
 # Comando padrão: configura e compila
@@ -23,6 +26,10 @@ all:
 run: all
 	@echo "Executando benchmark..."
 	@$(RUN_COMMAND)
+
+test: all
+	@echo "Executando testes..."
+	@$(TEST_COMMAND)
 
 # Limpeza total
 clean:
