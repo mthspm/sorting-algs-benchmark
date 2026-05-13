@@ -2,6 +2,6 @@
 - [ ] Selection sort
 - [ ] Insertion sort
 - [x] Merge sort
-- [ ] Quick sort
+- [ ] Quick sort (em andamento)
 - [ ] Heap sort
 - [x] Radix sort
