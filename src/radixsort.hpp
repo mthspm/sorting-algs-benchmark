@@ -1,5 +1,7 @@
+#pragma once
 #include <vector>
 #include <cstring>
+#include <cstdint>
 
 typedef struct {
     int max;
@@ -17,7 +19,7 @@ vector_info get_vector_info(int *array, size_t size) {
 }
 
 bool radix_sort(int *array, int *aux, size_t size) {
-    const int shift = 8;
+    const int shift = 11;
     const int base = 1 << shift;
     const int mask = base - 1;
 
@@ -28,8 +30,8 @@ bool radix_sort(int *array, int *aux, size_t size) {
 
     int passes = 0;
 
-    for (int exp = 0; exp < (shift * sizeof(int)) && (max_val >> exp) > 0; exp += shift) {
-        size_t bucket[base] = {0};
+    for (int exp = 0; exp < (8 * sizeof(int)) && (max_val >> exp) > 0; exp += shift) {
+        uint32_t bucket[base] = {0};
 
         // conta quantos elementos de cada digito existem
         for (int i = 0; i < size; i++) {
@@ -47,7 +49,7 @@ bool radix_sort(int *array, int *aux, size_t size) {
         for (int i = size - 1; i >= 0; i--) {
             unsigned int number = array[i] + offset;
             int digit = number >> exp & mask;
-            size_t idx = --bucket[digit];
+            uint32_t idx = --bucket[digit];
             aux[idx] = array[i];
         }
 
