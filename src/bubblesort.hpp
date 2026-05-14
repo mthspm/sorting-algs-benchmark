@@ -1,33 +1,28 @@
 #pragma once
-#include <cstdlib>
-#include <ctime>
-#include <vector> 
-#include <iostream>
+#include <vector>
 
-
-void bubble_sort(int *numeros, int tamanho){
-   
-    // logica do BubbleSort
-    for (int i = 0; i < tamanho - 1; i++) {
+void bubble_sort(int *array, size_t size) {
+    while (size > 0) {
         bool swapped = false;
-        for (int j = 0; j < tamanho - 1 - i; j++) {
-            
-            if (numeros[j] > numeros[j + 1]) {
-                int temporario = numeros[j];
-                numeros[j] = numeros[j + 1];
-                numeros[j + 1] = temporario;
-                swapped = true;
-            }
+        for (size_t i = 0; i < size - 1; i++) {
+            int a = array[i];
+            int b = array[i + 1];
+            bool cond = a > b;
+
+            array[i] = cond ? b : a;
+            array[i + 1] = cond ? a : b;
+
+            swapped |= cond;
         }
-        
+        size--;
+
         if (!swapped)
             return;
     }
-    
 }
 
-void bubble_sort(std::vector<int> &numeros){
-
-    int tamanho = numeros.size();
-    bubble_sort(numeros.data(), tamanho);
+void bubble_sort(std::vector<int> &v) {
+    if (v.empty())
+        return;
+    bubble_sort(v.data(), v.size());
 }

@@ -1,3 +1,4 @@
+#include "bubblesort.hpp"
 #include "mergesort.hpp"
 #include "radixsort.hpp"
 #include "utils.hpp"
@@ -26,4 +27,5 @@ int main() {
 
     test_alg(merge_sort, "Merge sort", rd_vector);
     test_alg(radix_sort, "Radix sort", rd_vector);
+    test_alg(bubble_sort, "Bubble sort", rd_vector);
 }
