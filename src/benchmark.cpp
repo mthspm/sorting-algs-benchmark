@@ -6,6 +6,7 @@
 #include "mergesort.hpp"
 #include "radixsort.hpp"
 #include "utils.hpp"
+#include "bubblesort.hpp"
 
 /**
  * Macro usado para fazer o benchmark de um agoritmo pelos 3 tipos de dados requisitados:
@@ -58,5 +59,6 @@ void slow_settings(benchmark::internal::Benchmark *benchmark) {
 // Inserir chamadas para benchmark abaixo
 BENCHMARK_SORT(merge_sort, fast_settings);
 BENCHMARK_SORT(radix_sort, fast_settings);
+BENCHMARK_SORT(bubble_sort, slow_settings);
 
 BENCHMARK_MAIN();
