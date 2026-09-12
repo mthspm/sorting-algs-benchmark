@@ -2,6 +2,16 @@
 
 Este projeto realiza o benchmark de alta performance de algoritmos de ordenação utilizando a biblioteca **Google Benchmark**. Ele está otimizado para sistemas de larga escala (4M+ elementos) e suporta compilação multiplataforma.
 
+## Algoritmos Implementados
+
+*   Bubble sort
+*   Selection sort (com otimizações SIMD)
+*   Insertion sort
+*   Merge sort
+*   Heap sort
+*   Radix sort
+*   Quick sort (em andamento)
+
 ## Requisitos Mínimos
 
 *   **Compilador C++:** Suporte a C++17 (GCC 9+, Clang 10+ ou MSVC 2019+).
